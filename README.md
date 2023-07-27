@@ -118,14 +118,16 @@ etc.
 
 For complex tables, the challenge is to extract all cell counts that contribute to the table total for a given level of table detail. For example, to extract the 'Tier 4' version of the table above you would need to extract not only the labelled Tier 4 counts (France, Germany, Italy), but also all counts for higher level tiers that contribute to the table total (UK, Ireland, Other Europe, North Africa), whilst omitting the sub-totals that include any of these counts (Europe, EU Member countries, Africa).
 
-This repository contains R code to:
+The repository folder ["/Data"](/Data) contains the following three datasets:
 
-* Download all England and Wales 2021 Census Topic Summary tables from [Nomis](https://www.nomisweb.co.uk/sources/census_2021_bulk)
-* Unzip these data, and save locally as **.csv** files
-* Create a TS Table Metadata file, summarising key information about each TS table, including population base, number of variables, tiers, interior and marginal cell counts and table total
-* Create a TS Cell Metadata file, summarising key information about each TS table cell, including the original ONS cell labels edited to make more consistent, a unique cell ID based on the the table identification code and the sequential ordering of cells within that table, plus the associated England & Wales cell value as a count and percentage
-* Create a TS Cell Mapping file, to facilitate extraction of all cell counts that contribute to the table total for a given tier in the table hierarchy, includiny any higher tier cells that contribute to the table total and omitting any cells containing subtotals that would lead to double double-counting
+* Metadata summarising key information about each TS table, including population base, geographies for which the table is available, number of variables, tiers, interior and marginal cell counts, plus the associated England & Wales table total
+* Metadata / data dictionary, summarising key information about each TS table cell, including the original ONS cell labels edited to make them more consistent, a unique cell ID (derived from the the ONS table identification code and the sequential ordering of cells within that table), plus the associated England & Wales cell value as a count and percentage
+* A file mapping which cells contribute to the table table total for a given tier in the table hierarchy
 
-The created Metadata and Mapping files are available in the folder ["/Data"](/Data)
+The repository folder ["/Code"](/Code) includes the code files required to:
 
-The code used to create these data are avaialble in the folder ["/Code"](/Code)
+* Download all England and Wales 2021 Census Topic Summary tables from [Nomis](https://www.nomisweb.co.uk/sources/census_2021_bulk), unzipping these data, and saving locally as **.csv** files
+* Create the TS Table Metadata file
+* Create the TS Cell Metadata file, 
+* Create the TS Cell Mapping file
+* Use the TS Cell Mapping file to extract all of the cell counts that contribute to the table total for a given tier in the table hierarchy
